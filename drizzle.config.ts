@@ -10,7 +10,7 @@ if (!databaseUrl) {
 }
 
 export default defineConfig({
-  schema: "./src/lib/auth-schema.ts",
+  schema: "./src/lib/*-schema.ts",
   out: "./drizzle",
   dialect: "postgresql",
   dbCredentials: {
