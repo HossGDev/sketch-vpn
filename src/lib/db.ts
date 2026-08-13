@@ -1,13 +1,54 @@
 import { drizzle } from "drizzle-orm/node-postgres";
+import {
+  account,
+  accountRelations,
+  session,
+  sessionRelations,
+  user,
+  userRelations,
+  verification,
+} from "./auth-schema";
+import {
+  devices,
+  devicesRelations,
+  peers,
+  peersRelations,
+  servers,
+  serversRelations,
+  subscriptions,
+  subscriptionsRelations,
+} from "./vpn-schema";
 
-let db: ReturnType<typeof drizzle>;
+const schema = {
+  user,
+  userRelations,
+  account,
+  accountRelations,
+  session,
+  sessionRelations,
+  verification,
+  devices,
+  devicesRelations,
+  peers,
+  peersRelations,
+  servers,
+  serversRelations,
+  subscriptions,
+  subscriptionsRelations,
+};
+
+let db: ReturnType<typeof drizzle<typeof schema>>;
 
 export function getDb() {
   if (!db) {
-    if (!process.env.DATABASE_URL) {
+    const databaseUrl = process.env.DATABASE_URL;
+
+    if (!databaseUrl) {
       throw new Error("DATABASE_URL is not set");
     }
-    db = drizzle(process.env.DATABASE_URL);
+
+    db = drizzle(databaseUrl, { schema });
   }
+
   return db;
 }
