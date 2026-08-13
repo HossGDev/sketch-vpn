@@ -90,8 +90,9 @@ export const subscriptions = pgTable("subscriptions", {
   stripeSubscriptionId: text("stripe_subscription_id"),
   deviceLimit: integer("device_limit").default(1).notNull(),
   allowedRegions: jsonb("allowed_regions")
-    .$type<string[] | "all">()
-    .default(["us-phx"]),
+    .$type<string[]>()
+    .notNull()
+    .default([]),
   currentPeriodEnd: timestamp("current_period_end"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
