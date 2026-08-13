@@ -68,12 +68,12 @@ export const peers = pgTable(
     createdAt: timestamp("created_at").defaultNow().notNull(),
     revokedAt: timestamp("revoked_at"),
   },
-  (table) => ({
+  (table) => [
     // an IP can only belong to one device per server
-    uniqueIpPerServer: unique().on(table.serverId, table.assignedIp),
+    unique().on(table.serverId, table.assignedIp),
     // a device only ever needs one peer entry per server
-    uniqueDevicePerServer: unique().on(table.deviceId, table.serverId),
-  })
+    unique().on(table.deviceId, table.serverId),
+  ]
 );
 
 // Kept separate from the `user` table so Stripe webhooks only ever touch
