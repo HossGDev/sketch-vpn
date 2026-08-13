@@ -1,5 +1,11 @@
 import { drizzle } from "drizzle-orm/node-postgres";
-import { user } from "./auth-schema";
+import {
+  account,
+  session,
+  user,
+  userRelations,
+  verification,
+} from "./auth-schema";
 import {
   devices,
   devicesRelations,
@@ -13,6 +19,10 @@ import {
 
 const schema = {
   user,
+  userRelations,
+  account,
+  session,
+  verification,
   devices,
   devicesRelations,
   peers,
