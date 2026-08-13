@@ -1,6 +1,4 @@
-# Better Auth Starter
-
-A production-ready authentication template built with Next.js, Better Auth, Drizzle ORM, Neon (PostgreSQL), and Resend.
+# Sketch vpn
 
 ## Stack
 
@@ -45,26 +43,4 @@ BETTER_AUTH_SECRET=
 BETTER_AUTH_URL=# http://localhost:3000 in dev, https://yourdomain.com in prod
 DATABASE_URL=
 RESEND_API_KEY=
-```
-
-## Project Structure
-
-```
-src/
-├── app/
-│   ├── dashboard/        # Protected route
-│   ├── forgot-password/
-│   ├── login/
-│   ├── register/
-│   ├── reset-password/
-│   └── verify/
-├── emails/               # React Email templates
-├── lib/
-│   ├── auth.ts           # Better Auth config
-│   ├── auth-client.ts    # Client-side auth
-│   ├── auth-schema.ts    # Drizzle schema
-│   ├── db.ts             # Database client
-│   ├── send-verification-email.tsx
-│   └── send-password-reset-email.tsx
-└── middleware.ts          # Edge route protection
 ```
